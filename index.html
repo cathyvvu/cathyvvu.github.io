@@ -1,15 +1,14 @@
 <!-- Generated with Claude -->
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cathy Vu | My Portfolio</title>
+    <title>Cathy Vu | My Data Analytics Portfolio</title>
 
     <style>
       /* ============================================================
-       BASIC STYLES — students can tweak colors/fonts here
+       BASIC STYLES 
        ============================================================ */
       * {
         box-sizing: border-box;
@@ -36,7 +35,6 @@
         margin-bottom: 30px;
       }
 
-      /* Empty space for photo — replace with your own <img> if you like */
       .photo {
         width: 140px;
         height: 140px;
@@ -49,16 +47,24 @@
         justify-content: center;
         color: #888;
         font-size: 13px;
+        overflow: hidden;
+      }
+
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       header h1 {
         font-size: 28px;
         margin-bottom: 6px;
-      } /* NAME */
+      }
+
       header p {
         font-size: 16px;
         color: #555;
-      } /* EXPERIENCES */
+      }
 
       /* ---------- TABS ---------- */
       .tabs {
@@ -98,6 +104,15 @@
         padding: 24px;
       }
 
+      .panel p {
+        line-height: 1.8;
+        margin-bottom: 12px;
+      }
+
+      .panel p:last-child {
+        margin-bottom: 0;
+      }
+
       /* ---------- PROJECT CARDS (1 x 3 grid) ---------- */
       .cards {
         display: grid;
@@ -112,7 +127,6 @@
         background: #fff;
       }
 
-      /* Empty space for project photo */
       .card-photo {
         height: 120px;
         background: #ddd;
@@ -151,8 +165,7 @@
          HEADER: photo, name, experiences
          ============================================================ -->
       <header>
-        <img src="profile.jpeg" class="photo" alt="Cathy Vu" />
-
+        <div class="photo"><img src="profile.jpeg" alt="Cathy Vu" /></div>
         <h1>Cathy Vu</h1>
       </header>
 
@@ -172,7 +185,12 @@
       <div id="about" class="tab-content active">
         <div class="panel">
           <p>
-            Master of Management in Analytics student at McGill University. 
+            I am currently a Master of Management in Analytics student at McGill University in Montreal, Canada. 
+            I completed my Bachelors in Health Sciences from Carleton University in Ottawa, Canada in 2023 and 
+            am excited to advance my skills in data analytics to further explore patient experiences within the 
+            healthcare industry.
+          </p>
+          <p>
             Sharing my coding journey through academic projects and real-world business problems!
           </p>
         </div>
@@ -183,28 +201,28 @@
         <div class="cards">
           <!-- CARD 1 -->
           <div class="card">
-            <div class="card-photo">Project Image</div>
+            <div class="card-photo">📊</div>
             <div class="card-text">
-              <h3>Project Title</h3>
-              <p>Short description of what you did and the tools you used.</p>
+              <h3>Customer Segmentation</h3>
+              <p>Used Python and K-means clustering to segment retail customers based on purchasing behavior.</p>
             </div>
           </div>
 
           <!-- CARD 2 -->
           <div class="card">
-            <div class="card-photo">Project Image</div>
+            <div class="card-photo">📈</div>
             <div class="card-text">
-              <h3>Project Title</h3>
-              <p>Short description of what you did and the tools you used.</p>
+              <h3>Sales Dashboard</h3>
+              <p>Interactive Tableau dashboard visualizing sales performance across regions.</p>
             </div>
           </div>
 
           <!-- CARD 3 -->
           <div class="card">
-            <div class="card-photo">Project Image</div>
+            <div class="card-photo">🤖</div>
             <div class="card-text">
-              <h3>Project Title</h3>
-              <p>Short description of what you did and the tools you used.</p>
+              <h3>Predictive Modeling</h3>
+              <p>Built a machine learning model to predict customer churn using logistic regression.</p>
             </div>
           </div>
         </div>
@@ -216,15 +234,12 @@
        ============================================================ -->
     <script>
       function showTab(id) {
-        // hide all tab contents
         document.querySelectorAll(".tab-content").forEach(function (el) {
           el.classList.remove("active");
         });
-        // remove active state from all buttons
         document.querySelectorAll(".tab-button").forEach(function (btn) {
           btn.classList.remove("active");
         });
-        // show the selected tab + highlight the clicked button
         document.getElementById(id).classList.add("active");
         event.target.classList.add("active");
       }
