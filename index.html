@@ -4,11 +4,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C Vu| Data Analytics Portfolio</title>
+    <title>Cathy Vu | Data Analytics Portfolio</title>
 
-    <!-- ============================================================
-       IMPORT INTER FONT (Notion's font)
-       ============================================================ -->
+    <!-- Import Inter Font (Notion's font) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <style>
@@ -24,11 +22,11 @@
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         color: #222;
-        background: #f0f0f0;
+        background: #F7FAFF;
         line-height: 1.5;
         min-height: 100vh;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         padding: 40px 20px;
       }
@@ -46,6 +44,7 @@
         border-radius: 16px;
         padding: 40px;
         box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        min-height: 500px;
       }
 
       /* ---------- LEFT COLUMN (1/3) ---------- */
@@ -62,7 +61,7 @@
         height: 140px;
         border-radius: 50%;
         background: #ddd;
-        border: 2px dashed #aaa;
+        /* Removed: border: 2px dashed #aaa; */
         margin: 0 0 16px 0;
         display: flex;
         align-items: center;
@@ -70,6 +69,7 @@
         color: #888;
         font-size: 13px;
         overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);  /* Optional: adds a subtle shadow instead */
       }
 
       .left-column .photo img {
@@ -120,6 +120,7 @@
       .right-column {
         flex: 0 0 70%;
         max-width: 70%;
+        min-height: 400px;
       }
 
       /* ---------- TABS ---------- */
@@ -154,6 +155,7 @@
       /* ---------- TAB CONTENT ---------- */
       .tab-content {
         display: none;
+        min-height: 300px;
       }
       .tab-content.active {
         display: block;
@@ -165,6 +167,7 @@
         border-radius: 6px;
         padding: 24px;
         margin-bottom: 24px;
+        overflow: visible;
       }
 
       .panel p {
@@ -186,6 +189,7 @@
         margin-bottom: 16px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         transition: box-shadow 0.3s ease;
+        overflow: visible;
       }
 
       .experience-item:hover {
@@ -232,10 +236,12 @@
         line-height: 1.8;
         margin: 0;
         font-weight: 400;
+        word-wrap: break-word;
       }
 
       .experience-item ul li {
         color: #000000;
+        word-wrap: break-word;
       }
 
       /* ---------- PROJECT CARDS (1 x 3 grid) ---------- */
@@ -243,6 +249,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 16px;
+        min-height: 200px;
       }
 
       .card {
@@ -251,6 +258,8 @@
         overflow: hidden;
         background: #fff;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
       }
 
       .card:hover {
@@ -272,6 +281,7 @@
 
       .card-text {
         padding: 14px;
+        flex: 1;
       }
       .card-text h3 {
         font-size: 16px;
@@ -294,9 +304,15 @@
 
       /* ---------- MOBILE: stack vertically ---------- */
       @media (max-width: 768px) {
+        body {
+          align-items: center;
+          padding: 20px 10px;
+        }
+
         .container {
           flex-direction: column;
           padding: 24px;
+          min-height: auto;
         }
 
         .left-column {
@@ -319,10 +335,12 @@
         .right-column {
           flex: 0 0 100%;
           max-width: 100%;
+          min-height: auto;
         }
 
         .cards {
           grid-template-columns: 1fr;
+          min-height: auto;
         }
 
         .experience-header {
@@ -331,6 +349,18 @@
         .experience-date {
           margin-top: 4px;
         }
+
+        .tab-content {
+          min-height: auto;
+        }
+      }
+
+      /* ---------- FIX FOR LONG WORDS ---------- */
+      .experience-item ul li,
+      .panel p,
+      .card-text p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
     </style>
   </head>
@@ -345,7 +375,7 @@
         <h1>Cathy Vu</h1>
         <p class="tagline">Business Analyst · SQL · Python · Tableau</p>
         <div class="social-links">
-          <a href="https://linkedin.com/in/cathyvvu" target="_blank" class="linkedin"> LinkedIn</a>
+          <a href="https://linkedin.com/in/cathyvvu" target="_blank" class="linkedin">LinkedIn</a>
           <a href="https://github.com/cathyvvu" target="_blank" class="github">GitHub</a>
         </div>
       </div>
