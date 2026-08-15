@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cathy Vu | Data Analytics Portfolio</title>
+    <title>C Vu | Data Analytics Portfolio</title>  <!-- ← Updated tab name -->
 
     <!-- Import Inter Font (Notion's font) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -42,7 +42,7 @@
         align-items: flex-start;
         background: #fff;
         border-radius: 16px;
-        padding: 40px 40px 40px 40px;
+        padding: 40px 60px 40px 40px;  /* Increased right padding */
         box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         min-height: 500px;
       }
@@ -90,7 +90,7 @@
         color: #555;
         margin-bottom: 14px;
         font-weight: 400;
-        white-space: nowrap;  /* ← Forces tagline to stay on one line */
+        white-space: nowrap;
       }
 
       .left-column .social-links {
@@ -170,7 +170,7 @@
         background: #fff;
         border: 1px solid #eee;
         border-radius: 6px;
-        padding: 20px 20px 20px 20px;
+        padding: 20px 30px 20px 20px;  /* Increased right padding */
         margin-bottom: 18px;
         overflow: visible;
         width: 100%;
@@ -195,7 +195,7 @@
         background: #ffffff;
         border: 1px solid #eee;
         border-radius: 6px;
-        padding: 18px 20px 18px 20px;
+        padding: 18px 30px 18px 20px;  /* Increased right padding */
         margin-bottom: 12px;
         margin-right: 0;
         box-shadow: 0 2px 8px rgba(0,0,0,0.04);
@@ -259,6 +259,7 @@
         overflow-wrap: break-word;
         hyphens: none;
         width: 100%;
+        padding-right: 10px;  /* Added right padding to lists */
       }
 
       .experience-item ul li {
@@ -309,7 +310,7 @@
       }
 
       .card-text {
-        padding: 12px 12px 12px 12px;
+        padding: 12px 18px 12px 12px;  /* Increased right padding */
         flex: 1;
       }
       .card-text h3 {
@@ -339,6 +340,7 @@
         word-wrap: break-word;
         overflow-wrap: break-word;
         hyphens: none;
+        padding-right: 10px;  /* Added right padding */
       }
 
       /* ---------- MOBILE: stack vertically ---------- */
@@ -373,7 +375,6 @@
           justify-content: center;
         }
 
-        /* Allow tagline to wrap on mobile if needed */
         .left-column .tagline {
           white-space: normal;
         }
@@ -407,6 +408,10 @@
 
         .experience-item {
           padding: 14px;
+        }
+
+        .experience-item ul {
+          padding-right: 0;
         }
       }
 
@@ -488,6 +493,7 @@
               <p class="experience-company">Children's Hospital of Eastern Ontario (CHEO)</p>
               <ul>
                 <li>Collaborated with clinicians to create a database of gender-affirming care offered at Canadian universities, and a manuscript to research journals highlighting possible gaps youth seeking gender-affirming care</li>
+                <li>Coordinated 500+ appointments, referrals, and patient records; assisting clinic with patient intake, care coordination, and service delivery for Ontario youth seeking gender-affirming care</li>
               </ul>
             </div>
 
@@ -500,6 +506,7 @@
               <p class="experience-company">CHEO Research Institute</p>
               <ul>
                 <li>Managed patient screening and data collection for multiple clinical studies in Emergency department, ensuring tracking of eligibility, enrollment, and participation</li>
+                <li>Coordinated communication between families and research team for organized documentation and intake processes</li>
               </ul>
             </div>
 
@@ -511,7 +518,8 @@
               </div>
               <p class="experience-company">Canadian National Institute for the Blind (CNIB)</p>
               <ul>
-                <li>Facilitated capstone project investigating the utilization of allied healthcare services among Canadians with sensory disabilities</li>
+                <li>Facilitated capstone project focused on the utilization of allied healthcare services among Canadians with sensory disabilities</li>
+                <li>Created recruitment materials, project reports, and presentations to share project findings at 2 research symposiums for research team and supervisors</li>
               </ul>
             </div>
           </div>
