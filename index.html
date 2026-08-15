@@ -42,7 +42,7 @@
         align-items: flex-start;
         background: #fff;
         border-radius: 16px;
-        padding: 40px 45px 40px 40px;
+        padding: 40px 40px 40px 40px;  /* Equal left and right padding */
         box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         min-height: 500px;
       }
@@ -54,7 +54,7 @@
         text-align: left;
         position: sticky;
         top: 40px;
-        padding-right: 5px;
+        padding-right: 0;  /* Remove extra padding */
       }
 
       .left-column .photo {
@@ -81,7 +81,7 @@
       .left-column h1 {
         font-size: 26px;
         margin-bottom: 4px;
-        color: #001B49;  /* ← Updated name color */
+        color: #001B49;
         font-weight: 700;
       }
 
@@ -121,7 +121,7 @@
         flex: 0 0 72%;
         max-width: 72%;
         min-height: 400px;
-        padding-right: 5px;
+        padding-right: 0;  /* Remove extra padding */
       }
 
       /* ---------- TABS ---------- */
@@ -149,7 +149,7 @@
       }
 
       .tab-button.active {
-        background: #001B49;  /* ← Updated selected tab color */
+        background: ##2c3e50;
         color: #fff;
         border-color: #001B49;
       }
@@ -169,7 +169,7 @@
         background: #fff;
         border: 1px solid #eee;
         border-radius: 6px;
-        padding: 20px 22px 20px 20px;
+        padding: 20px 20px 20px 20px;  /* Equal left and right padding */
         margin-bottom: 18px;
         overflow: visible;
         width: 100%;
@@ -191,7 +191,7 @@
         background: #ffffff;
         border: 1px solid #eee;
         border-radius: 6px;
-        padding: 18px 22px 18px 20px;
+        padding: 18px 20px 18px 20px;  /* Equal left and right padding */
         margin-bottom: 12px;
         margin-right: 0;
         box-shadow: 0 2px 8px rgba(0,0,0,0.04);
@@ -297,7 +297,7 @@
       }
 
       .card-text {
-        padding: 12px 14px 12px 12px;
+        padding: 12px 12px 12px 12px;  /* Equal left and right padding */
         flex: 1;
       }
       .card-text h3 {
