@@ -4,7 +4,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cathy Vu | My Data Analytics Portfolio</title>
+    <title>C Vu| Data Analytics Portfolio</title>
+
+    <!-- ============================================================
+       IMPORT INTER FONT (Notion's font)
+       ============================================================ -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <style>
       /* ============================================================
@@ -17,31 +22,48 @@
       }
 
       body {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         color: #222;
-        background: ##F7FAFF;
+        background: #f0f0f0;
         line-height: 1.5;
-      }
-
-      .container {
-        max-width: 900px;
-        margin: 0 auto;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         padding: 40px 20px;
       }
 
-      /* ---------- HEADER (photo + name + subheading) ---------- */
-      header {
-        text-align: center;
-        margin-bottom: 30px;
+      /* ============================================================
+       TWO-COLUMN LAYOUT
+       ============================================================ */
+      .container {
+        max-width: 1100px;
+        width: 100%;
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+        background: #fff;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       }
 
-      .photo {
+      /* ---------- LEFT COLUMN (1/3) ---------- */
+      .left-column {
+        flex: 0 0 30%;
+        max-width: 30%;
+        text-align: left;
+        position: sticky;
+        top: 40px;
+      }
+
+      .left-column .photo {
         width: 140px;
         height: 140px;
         border-radius: 50%;
         background: #ddd;
         border: 2px dashed #aaa;
-        margin: 0 auto 16px;
+        margin: 0 0 16px 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -50,26 +72,59 @@
         overflow: hidden;
       }
 
-      .photo img {
+      .left-column .photo img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
 
-      header h1 {
+      .left-column h1 {
         font-size: 28px;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
+        color: #2c3e50;
+        font-weight: 700;
       }
 
-      header p {
-        font-size: 16px;
+      .left-column .tagline {
+        font-size: 15px;
         color: #555;
+        margin-bottom: 16px;
+        font-weight: 400;
+      }
+
+      .left-column .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .left-column .social-links a {
+        font-size: 15px;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .left-column .social-links a:hover {
+        text-decoration: underline;
+      }
+
+      .linkedin {
+        color: #0077b5;
+      }
+
+      .github {
+        color: #333;
+      }
+
+      /* ---------- RIGHT COLUMN (2/3) ---------- */
+      .right-column {
+        flex: 0 0 70%;
+        max-width: 70%;
       }
 
       /* ---------- TABS ---------- */
       .tabs {
         display: flex;
-        justify-content: center;
         gap: 10px;
         margin-bottom: 24px;
       }
@@ -82,6 +137,8 @@
         font-size: 15px;
         border-radius: 4px;
         transition: background 0.3s ease;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
       }
 
       .tab-button:hover {
@@ -107,11 +164,13 @@
         border: 1px solid #eee;
         border-radius: 6px;
         padding: 24px;
+        margin-bottom: 24px;
       }
 
       .panel p {
         line-height: 1.8;
         margin-bottom: 12px;
+        font-weight: 400;
       }
 
       .panel p:last-child {
@@ -149,15 +208,15 @@
         font-size: 17px;
         color: #2c3e50;
         margin: 0;
+        font-weight: 600;
       }
 
       .experience-date {
         font-size: 14px;
         color: #888;
-        background: #f7f7f7;
-        padding: 2px 14px;
-        border-radius: 20px;
+        padding: 2px 0;
         white-space: nowrap;
+        font-weight: 400;
       }
 
       .experience-company {
@@ -169,9 +228,14 @@
 
       .experience-item ul {
         padding-left: 20px;
-        color: #555;
+        color: #000000;
         line-height: 1.8;
         margin: 0;
+        font-weight: 400;
+      }
+
+      .experience-item ul li {
+        color: #000000;
       }
 
       /* ---------- PROJECT CARDS (1 x 3 grid) ---------- */
@@ -203,6 +267,7 @@
         justify-content: center;
         color: #888;
         font-size: 12px;
+        font-weight: 400;
       }
 
       .card-text {
@@ -211,43 +276,55 @@
       .card-text h3 {
         font-size: 16px;
         margin-bottom: 6px;
+        font-weight: 600;
       }
       .card-text p {
         font-size: 14px;
         color: #555;
+        font-weight: 400;
       }
 
-      /* ---------- SOCIAL LINKS ---------- */
-      .social-links {
-        margin-top: 15px;
-        display: flex;
-        gap: 20px;
-        justify-content: center;
+      /* ---------- SECTION HEADERS ---------- */
+      .section-title {
+        color: #2c3e50;
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-weight: 600;
       }
 
-      .social-links a {
-        font-size: 16px;
-        text-decoration: none;
-        font-weight: bold;
-      }
+      /* ---------- MOBILE: stack vertically ---------- */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          padding: 24px;
+        }
 
-      .social-links a:hover {
-        text-decoration: underline;
-      }
+        .left-column {
+          flex: 0 0 100%;
+          max-width: 100%;
+          position: static;
+          text-align: center;
+          margin-bottom: 20px;
+        }
 
-      .linkedin {
-        color: #0077b5;
-      }
+        .left-column .photo {
+          margin: 0 auto 16px;
+        }
 
-      .github {
-        color: #333;
-      }
+        .left-column .social-links {
+          flex-direction: row;
+          justify-content: center;
+        }
 
-      /* ---------- MOBILE: stack cards vertically ---------- */
-      @media (max-width: 640px) {
+        .right-column {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+
         .cards {
           grid-template-columns: 1fr;
         }
+
         .experience-header {
           flex-direction: column;
         }
@@ -261,132 +338,132 @@
   <body>
     <div class="container">
       <!-- ============================================================
-         HEADER: photo, name, experiences
+         LEFT COLUMN (1/3) - Photo, Name, Socials
          ============================================================ -->
-      <header>
+      <div class="left-column">
         <div class="photo"><img src="profile.jpeg" alt="Cathy Vu" /></div>
         <h1>Cathy Vu</h1>
-        <p>Business Analyst · SQL · Python · Tableau</p>
-        <!-- Social Links -->
+        <p class="tagline">Business Analyst · SQL · Python · Tableau</p>
         <div class="social-links">
           <a href="https://linkedin.com/in/cathyvvu" target="_blank" class="linkedin"> LinkedIn</a>
           <a href="https://github.com/cathyvvu" target="_blank" class="github">GitHub</a>
         </div>
-      </header>
+      </div>
 
       <!-- ============================================================
-         TABS
+         RIGHT COLUMN (2/3) - Tabs + Content
          ============================================================ -->
-    <!-- TABS -->
-<div class="tabs">
-    <button class="tab-button active" onclick="showTab('about')">About Me</button>
-    <button class="tab-button" onclick="showTab('projects')">Projects</button>
-</div>
+      <div class="right-column">
+        <!-- TABS -->
+        <div class="tabs">
+          <button class="tab-button active" onclick="showTab('about')">About Me</button>
+          <button class="tab-button" onclick="showTab('projects')">Projects</button>
+        </div>
 
-<!-- ---------- TAB 1: ABOUT ME (with Experience inside) ---------- -->
-<div id="about" class="tab-content active">
-    <div class="panel">
-        <p>
-            I am currently a Master of Management in Analytics student at McGill University in Montreal, Canada. 
-            I completed my Bachelors in Health Sciences from Carleton University in Ottawa, Canada in 2023 and 
-            am excited to advance my skills in data analytics to further explore patient experiences within the 
-            healthcare industry.
-        </p>
-        <p>
-            Sharing my coding journey through academic projects and real-world business problems!
-        </p>
-    </div>
+        <!-- ---------- TAB 1: ABOUT ME ---------- -->
+        <div id="about" class="tab-content active">
+          <div class="panel">
+            <p>
+              I am currently a Master of Management in Analytics student at McGill University in Montreal, Canada. 
+              I completed my Bachelors in Health Sciences from Carleton University in Ottawa, Canada in 2023 and 
+              am excited to advance my skills in data analytics to further explore patient experiences within the 
+              healthcare industry.
+            </p>
+            <p>
+              Sharing my coding journey through academic projects and real-world business problems!
+            </p>
+          </div>
 
-    <!-- ======== EXPERIENCE SECTION (INSIDE ABOUT TAB) ======== -->
-    <div style="margin-top: 30px; padding-top: 25px; border-top: 2px solid #e8ecf1;">
-        <h3 style="color: #2c3e50; font-size: 20px; margin-bottom: 20px;">Experience</h3>
+          <!-- ======== EXPERIENCE SECTION ======== -->
+          <div style="margin-top: 0; padding-top: 0;">
+            <h3 class="section-title">Experience</h3>
 
-        <!-- Experience Item 1 -->
-        <div class="experience-item">
-            <div class="experience-header">
+            <!-- Experience Item 1 -->
+            <div class="experience-item">
+              <div class="experience-header">
                 <h3>Patient Service Clerk</h3>
                 <span class="experience-date">October 2023 – June 2026</span>
-            </div>
-            <p class="experience-company">Children's Hospital of Eastern Ontario (CHEO)</p>
-            <ul>
+              </div>
+              <p class="experience-company">Children's Hospital of Eastern Ontario (CHEO)</p>
+              <ul>
                 <li>Collaborated with clinicians to create a database of gender-affirming care offered at Canadian universities, and a manuscript to research journals highlighting possible gaps youth seeking gender-affirming care</li>
                 <li>Coordinated 500+ appointments, referrals, and patient records; assisting clinic with patient intake, care coordination, and service delivery for Ontario youth seeking gender-affirming care</li>
-            </ul>
-        </div>
+              </ul>
+            </div>
 
-        <!-- Experience Item 2 -->
-        <div class="experience-item">
-            <div class="experience-header">
+            <!-- Experience Item 2 -->
+            <div class="experience-item">
+              <div class="experience-header">
                 <h3>Research Assistant</h3>
                 <span class="experience-date">December 2023 – December 2024</span>
-            </div>
-            <p class="experience-company">CHEO Research Institute</p>
-            <ul>
+              </div>
+              <p class="experience-company">CHEO Research Institute</p>
+              <ul>
                 <li>Managed patient screening and data collection for multiple clinical studies in Emergency department, ensuring tracking of eligibility, enrollment, and participation</li>
                 <li>Coordinated communication between families and research team for organized documentation and intake processes</li>
-            </ul>
-        </div>
+              </ul>
+            </div>
 
-        <!-- Experience Item 3 -->
-        <div class="experience-item">
-            <div class="experience-header">
+            <!-- Experience Item 3 -->
+            <div class="experience-item">
+              <div class="experience-header">
                 <h3>Undergraduate Capstone Project Intern</h3>
                 <span class="experience-date">August 2022 – April 2023</span>
-            </div>
-            <p class="experience-company">Canadian National Institute for the Blind (CNIB)</p>
-            <ul>
+              </div>
+              <p class="experience-company">Canadian National Institute for the Blind (CNIB)</p>
+              <ul>
                 <li>Facilitated capstone project focused on the utilization of allied healthcare services among Canadians with sensory disabilities</li>
                 <li>Created recruitment materials, project reports, and presentations to share project findings at 2 research symposiums for research team and supervisors</li>
-            </ul>
+              </ul>
+            </div>
+          </div>
         </div>
+
+        <!-- ---------- TAB 2: PROJECTS ---------- -->
+        <div id="projects" class="tab-content">
+          <div class="cards">
+            <!-- CARD 1 -->
+            <div class="card">
+              <div class="card-photo"></div>
+              <div class="card-text">
+                <h3>Work in Progress</h3>
+                <p></p>
+              </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="card">
+              <div class="card-photo"></div>
+              <div class="card-text">
+                <h3>Work in Progress</h3>
+                <p></p>
+              </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="card">
+              <div class="card-photo"></div>
+              <div class="card-text">
+                <h3>Work in Progress</h3>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
 
-<!-- ---------- TAB 2: PROJECTS---------- -->
-<div id="projects" class="tab-content">
-    <div class="cards">
-        <!-- CARD 1 -->
-        <div class="card">
-            <div class="card-photo"></div>
-            <div class="card-text">
-                <h3>Work in Progress</h3>
-                <p></p>
-            </div>
-        </div>
-
-        <!-- CARD 2 -->
-        <div class="card">
-            <div class="card-photo"></div>
-            <div class="card-text">
-                <h3>Work in Progress</h3>
-                <p></p>
-            </div>
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="card">
-            <div class="card-photo"></div>
-            <div class="card-text">
-                <h3>Work in Progress</h3>
-                <p></p>
-            </div>
-        </div>
-    </div>
-</div>
     <!-- ============================================================
        SIMPLE TAB SWITCHING SCRIPT
        ============================================================ -->
     <script>
       function showTab(id) {
-        // Hide all tab contents
         document.querySelectorAll(".tab-content").forEach(function (el) {
           el.classList.remove("active");
         });
-        // Remove active state from all buttons
         document.querySelectorAll(".tab-button").forEach(function (btn) {
           btn.classList.remove("active");
         });
-        // Show selected tab and highlight button
         document.getElementById(id).classList.add("active");
         event.target.classList.add("active");
       }
