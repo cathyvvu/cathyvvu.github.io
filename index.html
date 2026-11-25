@@ -1,578 +1,281 @@
-<!-- Generated with Claude -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C Vu | Data Analytics Portfolio</title>  <!-- ← Updated tab name -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cathy Vu | Healthcare Analytics</title>
+<meta name="description" content="Cathy Vu, Master of Management in Analytics candidate at McGill University, focused on improving access to healthcare through data.">
+<style>
+  :root {
+    --navy: #0b1f4d;
+    --ink: #1f2937;
+    --muted: #6b7280;
+    --link: #0a78b5;
+    --line: #e5e7eb;
+    --page: #f6f9fd;
+    --card: #ffffff;
+    --soft: #f4f4f4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--page);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 15px;
+    padding: 32px 16px 64px;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-    <!-- Import Inter Font (Notion's font) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  .shell {
+    max-width: 1100px; margin: 0 auto;
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: 0 2px 14px rgba(15, 30, 70, 0.06);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 40px;
+  }
 
-    <style>
-      /* ============================================================
-       BASIC STYLES 
-       ============================================================ */
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+  /* Sidebar */
+  .side { position: sticky; top: 32px; align-self: start; }
+  .avatar {
+    width: 130px; height: 130px; border-radius: 50%;
+    object-fit: cover; display: block;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    background: var(--soft);
+  }
+  .side h1 { color: var(--navy); font-size: 27px; font-weight: 700; margin: 18px 0 6px; }
+  .tagline { color: var(--muted); font-size: 14px; }
+  .side-links { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+  .side-links a.plain { color: var(--ink); }
+  .side-meta { margin-top: 18px; font-size: 13.5px; color: var(--muted); line-height: 1.7; }
 
-      body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        color: #222;
-        background: #F7FAFF;
-        line-height: 1.5;
-        min-height: 100vh;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 40px 20px;
-      }
+  /* Tabs */
+  .tabs { display: flex; gap: 8px; margin-bottom: 18px; }
+  .tab {
+    font: inherit; font-size: 14.5px; font-weight: 500;
+    padding: 7px 20px; border-radius: 4px;
+    border: 1px solid #cfd4dc; background: #fff; color: var(--ink);
+    cursor: pointer;
+  }
+  .tab.active { background: var(--navy); border-color: var(--navy); color: #fff; font-weight: 600; }
+  .panel { display: none; }
+  .panel.active { display: block; }
 
-      /* ============================================================
-       TWO-COLUMN LAYOUT - MAIN CONTAINER
-       ============================================================ */
-      .container {
-        max-width: 1100px;
-        width: 100%;
-        display: flex;
-        gap: 40px;
-        align-items: flex-start;
-        background: #fff;
-        border-radius: 16px;
-        padding: 40px 60px 40px 40px;  /* Increased right padding */
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        min-height: 500px;
-      }
+  /* Boxes */
+  .box {
+    border: 1px solid var(--line); border-radius: 4px;
+    padding: 20px 22px; margin-bottom: 14px; background: #fff;
+  }
+  .box p + p { margin-top: 10px; }
+  h2 { font-size: 19px; font-weight: 600; color: var(--ink); margin: 26px 0 14px; }
 
-      /* ---------- LEFT COLUMN (1/3) ---------- */
-      .left-column {
-        flex: 0 0 28%;
-        max-width: 28%;
-        text-align: left;
-        position: sticky;
-        top: 40px;
-        padding-right: 0;
-      }
+  .role-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .role-head h3 { font-size: 16px; font-weight: 600; }
+  .dates { color: var(--muted); font-size: 13.5px; white-space: nowrap; }
+  .org { color: var(--link); font-size: 14.5px; margin: 2px 0 8px; }
+  .box ul { padding-left: 20px; }
+  .box li { margin-bottom: 4px; }
 
-      .left-column .photo {
-        width: 130px;
-        height: 130px;
-        border-radius: 50%;
-        background: #ddd;
-        margin: 0 0 14px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #888;
-        font-size: 13px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .skills-grid h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
+  .skills-grid ul { list-style: none; padding: 0; }
 
-      .left-column .photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+  /* Projects */
+  .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .proj { border: 1px solid var(--line); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; background: #fff; }
+  .proj-img {
+    height: 100px; background: var(--soft);
+    display: flex; align-items: center; justify-content: center;
+    color: #8a8f98; font-size: 13px; text-align: center; padding: 0 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .proj-img img { width: 100%; height: 100%; object-fit: cover; }
+  .proj-body { padding: 14px 14px 16px; display: flex; flex-direction: column; flex-grow: 1; }
+  .proj-body h3 { font-size: 15.5px; font-weight: 600; line-height: 1.35; }
+  .proj-meta { color: var(--muted); font-size: 12.5px; margin: 4px 0 8px; }
+  .proj-body p { font-size: 13.5px; flex-grow: 1; }
+  .proj-body p.proj-meta { flex-grow: 0; font-size: 12.5px; }
+  .badge { align-self: flex-start; font-size: 11.5px; font-weight: 600; color: var(--navy); background: #e8edf7; border-radius: 3px; padding: 2px 8px; margin-bottom: 8px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .chip { font-size: 11.5px; border: 1px solid var(--line); border-radius: 3px; padding: 1px 7px; color: var(--muted); }
+  .proj-link { margin-top: 10px; font-size: 13.5px; font-weight: 500; }
 
-      .left-column h1 {
-        font-size: 26px;
-        margin-bottom: 4px;
-        color: #001B49;
-        font-weight: 700;
-      }
+  @media (max-width: 900px) {
+    .shell { grid-template-columns: 1fr; padding: 28px 22px; gap: 28px; }
+    .side { position: static; }
+    .proj-grid { grid-template-columns: 1fr 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .proj-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
 
-      .left-column .tagline {
-        font-size: 14px;
-        color: #555;
-        margin-bottom: 14px;
-        font-weight: 400;
-        white-space: nowrap;
-      }
+<div class="shell">
 
-      .left-column .social-links {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
+  <aside class="side">
+    <img class="avatar" src="profile.jpg" alt="Photo of Cathy Vu">
+    <h1>Cathy Vu</h1>
+    <p class="tagline">Healthcare Analytics · Python · SQL · Power BI</p>
+    <div class="side-links">
+      <a href="https://www.linkedin.com/in/cathyvvu/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="plain" href="https://github.com/cathyvvu" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </aside>
 
-      .left-column .social-links a {
-        font-size: 14px;
-        text-decoration: none;
-        font-weight: 500;
-      }
-
-      .left-column .social-links a:hover {
-        text-decoration: underline;
-      }
-
-      .linkedin {
-        color: #0077b5;
-      }
-
-      .github {
-        color: #333;
-      }
-
-      /* ---------- RIGHT COLUMN (2/3) ---------- */
-      .right-column {
-        flex: 0 0 72%;
-        max-width: 72%;
-        min-height: 400px;
-        padding-right: 0;
-      }
-
-      /* ---------- TABS ---------- */
-      .tabs {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 18px;
-      }
-
-      .tab-button {
-        padding: 8px 20px;
-        border: 1px solid #ccc;
-        background: #fff;
-        cursor: pointer;
-        font-size: 14px;
-        border-radius: 4px;
-        transition: background 0.3s ease;
-        font-family: 'Inter', sans-serif;
-        font-weight: 500;
-        color: #333;
-      }
-
-      .tab-button:hover {
-        background: #e8ecf1;
-      }
-
-      .tab-button.active {
-        background: #001B49;
-        color: #fff;
-        border-color: #001B49;
-      }
-
-      /* ---------- TAB CONTENT ---------- */
-      .tab-content {
-        display: none;
-        min-height: 300px;
-        width: 100%;
-        overflow: visible;
-      }
-      .tab-content.active {
-        display: block;
-      }
-
-      .panel {
-        background: #fff;
-        border: 1px solid #eee;
-        border-radius: 6px;
-        padding: 20px 30px 20px 20px;  /* Increased right padding */
-        margin-bottom: 18px;
-        overflow: visible;
-        width: 100%;
-      }
-
-      .panel p {
-        line-height: 1.7;
-        margin-bottom: 10px;
-        font-weight: 400;
-        font-size: 15px;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: none;
-      }
-
-      .panel p:last-child {
-        margin-bottom: 0;
-      }
-
-      /* ---------- EXPERIENCE SECTION ---------- */
-      .experience-item {
-        background: #ffffff;
-        border: 1px solid #eee;
-        border-radius: 6px;
-        padding: 18px 30px 18px 20px;  /* Increased right padding */
-        margin-bottom: 12px;
-        margin-right: 0;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        transition: box-shadow 0.3s ease;
-        overflow: visible;
-        width: 100%;
-      }
-
-      .experience-item:hover {
-        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      }
-
-      .experience-item:last-child {
-        margin-bottom: 0;
-      }
-
-      .experience-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        margin-bottom: 2px;
-        gap: 8px;
-      }
-
-      .experience-header h3 {
-        font-size: 16px;
-        color: #2c3e50;
-        margin: 0;
-        font-weight: 600;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: none;
-      }
-
-      .experience-date {
-        font-size: 13px;
-        color: #888;
-        padding: 2px 0;
-        white-space: nowrap;
-        font-weight: 400;
-      }
-
-      .experience-company {
-        color: #0077b5;
-        font-weight: 500;
-        margin: 2px 0 8px 0;
-        font-size: 14px;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: none;
-      }
-
-      .experience-item ul {
-        padding-left: 20px;
-        color: #000000;
-        line-height: 1.6;
-        margin: 0;
-        font-weight: 400;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: none;
-        width: 100%;
-        padding-right: 10px;  /* Added right padding to lists */
-      }
-
-      .experience-item ul li {
-        color: #000000;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: none;
-        margin-bottom: 3px;
-        font-size: 14px;
-      }
-
-      /* ---------- PROJECT CARDS (1 x 3 grid) ---------- */
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-        min-height: 200px;
-        width: 100%;
-        padding-right: 0;
-      }
-
-      .card {
-        border: 1px solid #eee;
-        border-radius: 6px;
-        overflow: visible;
-        background: #fff;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      }
-
-      .card-photo {
-        height: 100px;
-        background: #f5f5f5;
-        border-bottom: 1px solid #eee;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #888;
-        font-size: 12px;
-        font-weight: 400;
-      }
-
-      .card-text {
-        padding: 12px 18px 12px 12px;  /* Increased right padding */
-        flex: 1;
-      }
-      .card-text h3 {
-        font-size: 15px;
-        margin-bottom: 4px;
-        font-weight: 600;
-        color: #2c3e50;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: none;
-      }
-      .card-text p {
-        font-size: 13px;
-        color: #555;
-        font-weight: 400;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: none;
-      }
-
-      /* ---------- SECTION HEADERS ---------- */
-      .section-title {
-        color: #2c3e50;
-        font-size: 19px;
-        margin-bottom: 14px;
-        font-weight: 600;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: none;
-        padding-right: 10px;  /* Added right padding */
-      }
-
-      /* ---------- MOBILE: stack vertically ---------- */
-      @media (max-width: 768px) {
-        body {
-          align-items: center;
-          padding: 20px 10px;
-        }
-
-        .container {
-          flex-direction: column;
-          padding: 20px;
-          min-height: auto;
-          gap: 24px;
-        }
-
-        .left-column {
-          flex: 0 0 100%;
-          max-width: 100%;
-          position: static;
-          text-align: center;
-          margin-bottom: 16px;
-          padding-right: 0;
-        }
-
-        .left-column .photo {
-          margin: 0 auto 14px;
-        }
-
-        .left-column .social-links {
-          flex-direction: row;
-          justify-content: center;
-        }
-
-        .left-column .tagline {
-          white-space: normal;
-        }
-
-        .right-column {
-          flex: 0 0 100%;
-          max-width: 100%;
-          min-height: auto;
-          padding-right: 0;
-        }
-
-        .cards {
-          grid-template-columns: 1fr;
-          min-height: auto;
-        }
-
-        .experience-header {
-          flex-direction: column;
-        }
-        .experience-date {
-          margin-top: 4px;
-        }
-
-        .tab-content {
-          min-height: auto;
-        }
-
-        .panel {
-          padding: 16px;
-        }
-
-        .experience-item {
-          padding: 14px;
-        }
-
-        .experience-item ul {
-          padding-right: 0;
-        }
-      }
-
-      /* ---------- FIX FOR LONG WORDS - NO HYPHENATION ---------- */
-      .experience-item ul li,
-      .panel p,
-      .card-text p,
-      .experience-header h3,
-      .experience-company,
-      .card-text h3,
-      .section-title {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: none;
-      }
-
-      /* ---------- ENSURE ALL BOXES HAVE SPACE ---------- */
-      .right-column > *,
-      .right-column .tab-content > *,
-      .right-column .panel,
-      .right-column .experience-item,
-      .right-column .cards {
-        width: 100%;
-        max-width: 100%;
-        overflow: visible;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="container">
-      <!-- ============================================================
-         LEFT COLUMN (1/3) - Photo, Name, Socials
-         ============================================================ -->
-      <div class="left-column">
-        <div class="photo"><img src="profile.jpeg" alt="Cathy Vu" /></div>
-        <h1>Cathy Vu</h1>
-        <p class="tagline">Business Analyst · SQL · Python · Tableau</p>
-        <div class="social-links">
-          <a href="https://linkedin.com/in/cathyvvu" target="_blank" class="linkedin">LinkedIn</a>
-          <a href="https://github.com/cathyvvu" target="_blank" class="github">GitHub</a>
-        </div>
-      </div>
-
-      <!-- ============================================================
-         RIGHT COLUMN (2/3) - Tabs + Content
-         ============================================================ -->
-      <div class="right-column">
-        <!-- TABS -->
-        <div class="tabs">
-          <button class="tab-button active" onclick="showTab('about')">About Me</button>
-          <button class="tab-button" onclick="showTab('projects')">Projects</button>
-        </div>
-
-        <!-- ---------- TAB 1: ABOUT ME ---------- -->
-        <div id="about" class="tab-content active">
-          <div class="panel">
-            <p>
-              I am currently a Master of Management in Analytics student at McGill University in Montreal, Canada. 
-              I completed my Bachelors in Health Sciences from Carleton University in Ottawa, Canada in 2023 and 
-              am excited to advance my skills in data analytics to further explore patient experiences within the 
-              healthcare industry.
-            </p>
-            <p>
-              Sharing my coding journey through academic projects and real-world business problems!
-            </p>
-          </div>
-
-          <!-- ======== EXPERIENCE SECTION ======== -->
-          <div style="margin-top: 0; padding-top: 0; width: 100%; overflow: visible;">
-            <h3 class="section-title">Experience</h3>
-
-            <!-- Experience Item 1 -->
-            <div class="experience-item">
-              <div class="experience-header">
-                <h3>Patient Service Clerk</h3>
-                <span class="experience-date">October 2023 – June 2026</span>
-              </div>
-              <p class="experience-company">Children's Hospital of Eastern Ontario (CHEO)</p>
-              <ul>
-                <li>Collaborated with clinicians to create a database of gender-affirming care offered at Canadian universities, and a manuscript to research journals highlighting possible gaps youth seeking gender-affirming care</li>
-                <li>Coordinated 500+ appointments, referrals, and patient records; assisting clinic with patient intake, care coordination, and service delivery for Ontario youth seeking gender-affirming care</li>
-              </ul>
-            </div>
-
-            <!-- Experience Item 2 -->
-            <div class="experience-item">
-              <div class="experience-header">
-                <h3>Research Assistant</h3>
-                <span class="experience-date">December 2023 – December 2024</span>
-              </div>
-              <p class="experience-company">CHEO Research Institute</p>
-              <ul>
-                <li>Managed patient screening and data collection for multiple clinical studies in Emergency department, ensuring tracking of eligibility, enrollment, and participation</li>
-                <li>Coordinated communication between families and research team for organized documentation and intake processes</li>
-              </ul>
-            </div>
-
-            <!-- Experience Item 3 -->
-            <div class="experience-item">
-              <div class="experience-header">
-                <h3>Undergraduate Capstone Project Intern</h3>
-                <span class="experience-date">August 2022 – April 2023</span>
-              </div>
-              <p class="experience-company">Canadian National Institute for the Blind (CNIB)</p>
-              <ul>
-                <li>Facilitated capstone project focused on the utilization of allied healthcare services among Canadians with sensory disabilities</li>
-                <li>Created recruitment materials, project reports, and presentations to share project findings at 2 research symposiums for research team and supervisors</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- ---------- TAB 2: PROJECTS ---------- -->
-        <div id="projects" class="tab-content">
-          <div class="cards">
-            <!-- CARD 1 -->
-            <div class="card">
-              <div class="card-photo">Project Image</div>
-              <div class="card-text">
-                <h3>Work in Progress</h3>
-                <p></p>
-              </div>
-            </div>
-
-            <!-- CARD 2 -->
-            <div class="card">
-              <div class="card-photo">Project Image</div>
-              <div class="card-text">
-                <h3>Work in Progress</h3>
-                <p></p>
-              </div>
-            </div>
-
-            <!-- CARD 3 -->
-            <div class="card">
-              <div class="card-photo">Project Image</div>
-              <div class="card-text">
-                <h3>Work in Progress</h3>
-                <p></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <main>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="about" role="tab">About Me</button>
+      <button class="tab" data-tab="projects" role="tab">Projects</button>
     </div>
 
-    <!-- ============================================================
-       SIMPLE TAB SWITCHING SCRIPT
-       ============================================================ -->
-    <script>
-      function showTab(id) {
-        document.querySelectorAll(".tab-content").forEach(function (el) {
-          el.classList.remove("active");
-        });
-        document.querySelectorAll(".tab-button").forEach(function (btn) {
-          btn.classList.remove("active");
-        });
-        document.getElementById(id).classList.add("active");
-        event.target.classList.add("active");
-      }
-    </script>
-  </body>
+    <!-- ABOUT ME -->
+    <section id="about" class="panel active">
+      <div class="box">
+        <p>My experience in healthcare has centred on improving access to care, and I am now developing the analytical skills to support that work on a broader scale.</p>
+        <p>I am currently completing a Master of Management in Analytics at McGill University in Montreal, after earning my Bachelor of Health Sciences from Carleton University in Ottawa in 2023. Before McGill, I spent three years at the Children's Hospital of Eastern Ontario (CHEO), supporting patients and families in outpatient care and the Emergency Department.</p>
+        <p>Sharing my work through academic projects and real-world business problems.</p>
+      </div>
+
+      <h2>Experience</h2>
+
+      <div class="box">
+        <div class="role-head"><h3>Patient Service Clerk</h3><span class="dates">October 2023 – June 2026</span></div>
+        <p class="org">Children's Hospital of Eastern Ontario (CHEO)</p>
+        <ul>
+          <li>Initiated the clinic's first Gender Diversity clerk role, managing 500+ patient appointments in collaboration with clinicians</li>
+          <li>Reorganized referral and follow-up scheduling lists, reducing wait times by 50% for youth seeking gender-affirming care</li>
+          <li>Co-authored a manuscript with the clinical team, submitted for journal review, on gaps in gender-affirming care across Canadian post-secondary institutions</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <div class="role-head"><h3>Emergency Department Research Assistant</h3><span class="dates">May 2023 – December 2024</span></div>
+        <p class="org">Children's Hospital of Eastern Ontario (CHEO)</p>
+        <ul>
+          <li>Screened 200+ ED patients across five clinical studies, increasing study enrollment by 30%</li>
+          <li>Introduced clinical studies to families and obtained informed consent</li>
+          <li>Coordinated intake and documentation for 50+ participants</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <div class="role-head"><h3>Undergraduate Capstone Student</h3><span class="dates">August 2022 – April 2023</span></div>
+        <p class="org">Canadian National Institute for the Blind (CNIB)</p>
+        <ul>
+          <li>Led a capstone project on allied healthcare use among Canadians with sensory disabilities</li>
+          <li>Developed the research proposal and accessible recruitment materials, presented at two research symposiums, and earned approval for Canada-wide data collection</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <div class="role-head"><h3>Co-President</h3><span class="dates">May 2022 – April 2023</span></div>
+        <p class="org">Carleton University Pre-Dental Society</p>
+        <ul>
+          <li>Led a 10-member executive team delivering five events, growing student participation by 40% and partnerships with dental professionals by 50%</li>
+        </ul>
+      </div>
+
+      <h2>Education</h2>
+
+      <div class="box">
+        <div class="role-head"><h3>Master of Management in Analytics</h3><span class="dates">July 2026 – Present</span></div>
+        <p class="org">McGill University, Desautels Faculty of Management</p>
+        <ul><li>Merit-Based Entrance Scholarship ($10,000)</li></ul>
+      </div>
+
+      <div class="box">
+        <div class="role-head"><h3>Bachelor of Health Sciences, Biomedical Sciences (Minor in Biology)</h3><span class="dates">September 2019 – June 2023</span></div>
+        <p class="org">Carleton University</p>
+        <ul><li>GPA 3.85/4.00 · Dean's Honour List · Carleton Academic Scholarship · Laurel Society Scholarship</li></ul>
+      </div>
+
+      <h2>Skills &amp; Certifications</h2>
+
+      <div class="box">
+        <div class="skills-grid">
+          <div>
+            <h3>Tools</h3>
+            <ul><li>Python, SQL, R, SAS, SPSS</li><li>Power BI, Microsoft Office</li><li>Databricks, Spark, Kafka</li><li>Azure, Git</li></ul>
+          </div>
+          <div>
+            <h3>Methods</h3>
+            <ul><li>Machine learning</li><li>Linear &amp; logistic regression</li><li>Hypothesis testing</li><li>Statistical inference</li></ul>
+          </div>
+          <div>
+            <h3>Certifications</h3>
+            <ul><li>Databricks Fundamentals</li><li>Anthropic: Claude API, MCP, Agent Skills</li><li>DataCamp: Intermediate Python</li><li>Project Management Foundations</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="panel">
+      <div class="proj-grid">
+
+        <div class="proj">
+          <div class="proj-img">Maples Group Capstone</div>
+          <div class="proj-body">
+            <h3>AI-Driven KYC Risk Prioritization</h3>
+            <p class="proj-meta">Co-Lead &amp; UI Designer · Sept 2026 – Present</p>
+            <p>Co-leading a four-person team building an AI pipeline (OCR, LLMs and an agentic workflow) that scores investor risk and prioritizes KYC reviews. Designing the Power BI review dashboard and leading client presentations.</p>
+            <div class="chips"><span class="chip">Power BI</span><span class="chip">LLMs</span><span class="chip">Client Work</span></div>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-img">QLoop · Scope-AI-Thon</div>
+          <div class="proj-body">
+            <span class="badge">$2,000 Innovation Award</span>
+            <h3>QLoop: AI Vitals Station for ED Waiting Rooms</h3>
+            <p class="proj-meta">Clinical Lead · Nov 2026</p>
+            <p>Co-designed a self-service vitals station for emergency department waiting rooms that helps nurses identify patients whose condition is worsening while they wait.</p>
+            <div class="chips"><span class="chip">Healthcare AI</span><span class="chip">Clinical Workflows</span></div>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-img">Spark Check · MLOps</div>
+          <div class="proj-body">
+            <h3>Student Depression Prediction &amp; Spark Check</h3>
+            <p class="proj-meta">Data Pipeline Owner · Sept 2026 – Present</p>
+            <p>Machine learning pipeline on the Dartmouth StudentLife dataset predicting end-of-term depression, now being deployed as an app by a seven-person MLOps team.</p>
+            <div class="chips"><span class="chip">Python</span><span class="chip">ML</span><span class="chip">MLOps</span></div>
+            <a class="proj-link" href="https://github.com/mariabssadh1-droid/student-burnout-analysis" target="_blank" rel="noopener">View repository →</a>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-img">Kafka → Databricks</div>
+          <div class="proj-body">
+            <h3>Healthcare Access Event Streaming</h3>
+            <p class="proj-meta">Individual Project · Nov 2026</p>
+            <p>Streamed simulated healthcare-access events through Kafka (Confluent Cloud), using a custom Avro schema, into Spark on Databricks for batch and streaming analysis.</p>
+            <div class="chips"><span class="chip">Kafka</span><span class="chip">Spark</span><span class="chip">Databricks</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+  document.querySelectorAll('.tab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.tab').forEach(function (b) { b.classList.remove('active'); });
+      document.querySelectorAll('.panel').forEach(function (p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+</body>
 </html>
